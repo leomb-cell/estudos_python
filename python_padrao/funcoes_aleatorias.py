@@ -9,8 +9,7 @@ def is_prime(num):
                 return False
     return True
 
-print(is_prime(7523345879345938742594784643))
-
+print(is_prime(752))
 
 # limpar tela
 
