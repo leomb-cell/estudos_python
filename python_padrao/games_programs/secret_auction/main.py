@@ -3,7 +3,7 @@
 # TODO-3: Whether if new bids need to be added
 # TODO-4: Compare bids in dictionary
 
-import art
+import python_padrao.games_programs.secret_auction.art as art
 import datetime
 
 # variables

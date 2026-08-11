@@ -1,5 +1,5 @@
-import functions
-import art
+import python_padrao.games_programs.higher_lower_game.functions as functions
+import python_padrao.games_programs.higher_lower_game.art as art
 
 score = 0
 

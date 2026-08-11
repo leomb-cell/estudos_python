@@ -1,4 +1,4 @@
-import art
+import python_padrao.games_programs.caesar_cipher.art as art
 
 # data
 

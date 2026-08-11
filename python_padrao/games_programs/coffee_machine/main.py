@@ -1,5 +1,5 @@
-import art
-import functions
+import python_padrao.games_programs.coffee_machine.art as art
+import python_padrao.games_programs.coffee_machine.functions as functions
 
 # variables
 

@@ -16,3 +16,4 @@ print(is_prime(752))
 def clear_terminal_ansi():
     # \033[H moves cursor to top home, \033[2J clears the screen
     print("\033[H\033[2J", end="")
+    

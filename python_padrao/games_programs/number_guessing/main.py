@@ -1,6 +1,6 @@
 import random
-import art
-import functions
+import python_padrao.games_programs.number_guessing.art as art
+import python_padrao.games_programs.number_guessing.functions as functions
 
 while True:
 

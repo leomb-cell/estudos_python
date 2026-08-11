@@ -1,7 +1,7 @@
 # imports
 
-import functions
-import art
+import python_padrao.games_programs.blackjack.functions as functions
+import python_padrao.games_programs.blackjack.art as art
 import random
 
 # player variables

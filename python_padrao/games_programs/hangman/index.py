@@ -1,6 +1,6 @@
 import random
-import words
-import art
+import python_padrao.games_programs.hangman.words as words
+import python_padrao.games_programs.hangman.art as art
 import time
 
 #functions
