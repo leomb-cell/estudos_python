@@ -1,14 +1,13 @@
 from turtle import Turtle, Screen, setup
 from random import * # not good practice, too confusing
 from PIL import Image
+import time
 
 # # instanciando a classe Turtle
 
 timmy = Turtle()
 timmy.shape('turtle')
 timmy.speed(0)
-
-# setting up window
 
 setup(width=1000, height=1000, startx=500, starty=400)
 
@@ -18,11 +17,12 @@ screen = Screen()
 screen.colormode(255)
 
 # changing color
-
 def rand_color():
-    timmy.color(randint(0,255), randint(0,255), randint(0,255))
-
-# dashed line
+    r = randint(0,255)
+    g = randint(0,255)
+    b = randint(0,255)
+    random_color = (r,g,b)
+    timmy.color(random_color)
 
 def dashed_line(lenght):
     for i in range(int(lenght/10)):
@@ -32,51 +32,31 @@ def dashed_line(lenght):
         timmy.up()
         timmy.forward(10)
 
-# random walk
-
 def rand_walk():
     for i in range(1000):
+        timmy.width(2)
         rand_color()
-        timmy.width(randint(1,10))
         rand_len = randint(1,200)
         rand_radius = choice([0, 90, 180, 270])
         timmy.forward(rand_len)
         timmy.setheading(rand_radius)    
 
         # teleportando se sair dos limites
-        
-        if timmy.xcor() > 1000 or timmy.xcor() < -990: # eixo x
+
+            # eixo x
+
+        if timmy.xcor() > 1000 or timmy.xcor() < -990:
             print(f"hit the side at x:{timmy.xcor()}, y:{timmy.ycor()} ")
             timmy.teleport(randint(-1000,1000), randint(-490,490))
             timmy.right(rand_radius)
 
-        if timmy.ycor() > 500 or timmy.ycor() < -490: # eixo y
+            # eixo y
+        if timmy.ycor() > 500 or timmy.ycor() < -490:
             print(f"hit the side at x:{timmy.xcor()}, y:{timmy.ycor()} ")
             timmy.teleport(randint(-1000,1000), randint(-490,490))
             timmy.right(rand_radius)
 
-# spirograph
-
-def spirograph(size):
-    for i in range(36):
-        rand_color()
-        for i in range(360):
-            timmy.right(1)
-            timmy.forward(size)
-        # shifting to next position
-        timmy.right(10)
-
-# rand_walk()
-
-# spirograph(1)
-
-# random spirographs
-
-for i in range(10):
-    spirograph(randint(1,4))
-    timmy.teleport(randint(-1000,1000), randint(-490,490))
-
-
+rand_walk()
 timmy.hideturtle()
 
 # salvando resultado em png
@@ -87,9 +67,18 @@ while True:
 
     if nome_resultado != '': break
 
-timmy.getscreen().getcanvas().postscript(file="./python_padrao/studies/day_18/desenho.eps")
-img = Image.open("./python_padrao/studies/day_18/desenho.eps")
-img.save(f"./python_padrao/studies/day_18/{nome_resultado}.png", "PNG")
+# caminhos para os arquivos
+
+result_path = f"./python_padrao/games_programs/random_walk/art/results/{nome_resultado}.png"
+eps_path = f"./python_padrao/games_programs/random_walk/art/eps/{nome_resultado}.eps"
+
+timmy.getscreen().getcanvas().postscript(file=eps_path)
+img = Image.open(eps_path)
+img.save( result_path, "PNG")
+
+
+
+# fechar a janela
 
 screen.exitonclick()
 
