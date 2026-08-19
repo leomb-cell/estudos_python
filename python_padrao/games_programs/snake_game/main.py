@@ -1,35 +1,14 @@
-from turtle import Screen, Turtle
-import time
+from turtle import Screen
+from snake import Snake
+from food import Food
+from scoreboard import ScoreBoard
+
 
 # variables
 
-sneak_body = []
-starting_positions = [(0,0), (-20, 0), (-40, 0)]
 game_is_on = True
 
-# functions
-
-def create_sneak():
-    for i in range(0,3):
-        new_bit = Turtle(shape='square')
-        new_bit.color('white')
-        new_bit.penup()
-        new_bit.goto(starting_positions[i])
-        sneak_body.append(new_bit)
-    screen.update()
-    time.sleep(1)
-
-
-def move_snake(sneak):
-    for i in range(len(sneak), 0, -1):
-        bit = sneak[i-1]
-        bit.forward(0.05)
-    screen.update()
-
-# def turn(angle):
-    
-
-# screen
+# screen config
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -39,11 +18,38 @@ screen.tracer(0)
 
 # create a snake body
 
-create_sneak()
+snake = Snake(screen)
 
+# create food
+
+food = Food()
+
+# show score
+
+score = ScoreBoard()
+
+# user control
+
+screen.listen()
+screen.onkeypress(key="w", fun=snake.up)
+screen.onkeypress(key="a", fun=snake.left)
+screen.onkeypress(key="s", fun=snake.down)
+screen.onkeypress(key="d", fun=snake.right)
+
+# game loop
+ 
 while game_is_on:
-    move_snake(sneak_body)
+    screen.update()
+    snake.move()
+    # food collision
 
+    if snake.head.distance(food) < 16:
+        print("nom nom nom")
+        food.refresh()
+        score.increase_score()
+        snake.grow()
+
+    
 
 
 
